@@ -1,16 +1,16 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { addContact } from '../features/contacts/contactsSlice';
+import { addContact } from '../store';
 
-export default function ContactForm() {
+function ContactForm() {
   const [name, setName] = useState('');
   const [phone, setPhone] = useState('');
   const dispatch = useDispatch();
 
   const handleSubmit = e => {
     e.preventDefault();
-    if (!name || !phone) return;
-    dispatch(addContact(name, phone));
+    const id = Date.now();
+    dispatch(addContact({ id, name, phone }));
     setName('');
     setPhone('');
   };
@@ -23,3 +23,5 @@ export default function ContactForm() {
     </form>
   );
 }
+
+export default ContactForm;
