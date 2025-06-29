@@ -1,24 +1,21 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { removeContact } from '../../store'; 
+import { fetchContacts, removeContact } from './contactsSlice';
 
 export default function ContactList() {
   const contacts = useSelector(state => state.contacts);
   const dispatch = useDispatch();
 
-  
-  if (!Array.isArray(contacts)) {
-    return <p>Помилка</p>;
-  }
+  useEffect(() => {
+    dispatch(fetchContacts());
+  }, [dispatch]);
 
   return (
     <ul>
       {contacts.map(contact => (
         <li key={contact.id}>
           {contact.name} — {contact.phone}
-          <button onClick={() => dispatch(removeContact(contact.id))}>
-            Видалити
-          </button>
+          <button onClick={() => dispatch(removeContact(contact.id))}>Видалити</button>
         </li>
       ))}
     </ul>
