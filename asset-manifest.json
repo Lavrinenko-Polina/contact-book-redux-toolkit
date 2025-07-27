@@ -1,10 +1,13 @@
 {
   "files": {
-    "main.js": "/contact-book-redux-toolkit/static/js/main.455b0ba3.js",
+    "main.css": "/contact-book-redux-toolkit/static/css/main.e6c13ad2.css",
+    "main.js": "/contact-book-redux-toolkit/static/js/main.6334387d.js",
     "index.html": "/contact-book-redux-toolkit/index.html",
-    "main.455b0ba3.js.map": "/contact-book-redux-toolkit/static/js/main.455b0ba3.js.map"
+    "main.e6c13ad2.css.map": "/contact-book-redux-toolkit/static/css/main.e6c13ad2.css.map",
+    "main.6334387d.js.map": "/contact-book-redux-toolkit/static/js/main.6334387d.js.map"
   },
   "entrypoints": [
-    "static/js/main.455b0ba3.js"
+    "static/css/main.e6c13ad2.css",
+    "static/js/main.6334387d.js"
   ]
 }
