@@ -1,39 +1,26 @@
-// import React from 'react';
-// import ContactForm from './components/ContactForm';
-// import ContactList from './features/contacts/ContactList';
-
-// function App() {
-//   return (
-//     <div>
-//       <h1>Книга контактів</h1>
-//       <ContactForm />
-//       <ContactList />
-//     </div>
-//   );
-// }
-
-// export default App;
-
 import React, { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
-import { fetchContacts } from './features/contacts/contactsSlice';
-import ContactForm from './components/ContactForm';
-import ContactList from './features/contacts/ContactList';
+import { useSelector, useDispatch } from 'react-redux';
+import AuthForm from './components/AuthForm';
+import ContactBook from './components/ContactBook'; // або твій основний компонент
+import { loginUser } from './features/auth/authSlice';
 
-function App() {
+const App = () => {
+  const user = useSelector((state) => state.auth.user);
   const dispatch = useDispatch();
 
+  // Повертаємо користувача з localStorage, якщо він там є
   useEffect(() => {
-    dispatch(fetchContacts());
+    const savedUser = localStorage.getItem('user');
+    if (savedUser) {
+      dispatch(loginUser(JSON.parse(savedUser)));
+    }
   }, [dispatch]);
 
   return (
     <div>
-      <h1>Книга контактів</h1>
-      <ContactForm />
-      <ContactList />
+      {user ? <ContactBook /> : <AuthForm />}
     </div>
   );
-}
+};
 
 export default App;
